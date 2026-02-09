@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "tw-animate-css";
 /* 
   ---break---
@@ -10,7 +10,6 @@
   para crear un layout de pantalla completa con fondo en gradiente y contenido centrado.
 */
 .bg-gradient {
-
   /* 
     Aplica un gradiente de fondo diagonal (bottom-right)
     desde un tono slate oscuro, pasando por gris oscuro,
@@ -54,7 +53,7 @@
 }
 
 .Pokemon {
-  @apply bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer
+  @apply bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer;
 }
 
 /* 
