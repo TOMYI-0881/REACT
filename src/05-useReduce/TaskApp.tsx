@@ -14,7 +14,7 @@ export const TasksApp = () => {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(state));
+    localStorage.setItem("task-state", JSON.stringify(state));
   }, [state]);
 
   const addTodo = () => {
