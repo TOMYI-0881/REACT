@@ -13,6 +13,7 @@ interface TaskState {
   pending: number;
 }
 
+//zod
 const TodoSchema = z.object({
   id: z.number(),
   text: z.string(),
