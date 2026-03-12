@@ -1,7 +1,13 @@
+import { RouterProvider } from "react-router";
+import { appRouter } from "./Router/app.router";
+import { UseContextProvider } from "./context/UseContext";
+
 export const ProfessionalApp = () => {
   return (
-    <div className="bg-gradient flex flex-col">
-      <h1> Professional App</h1>
-    </div>
+    <UseContextProvider>
+      <div className="bg-gradient">
+        <RouterProvider router={appRouter} />
+      </div>
+    </UseContextProvider>
   );
 };
