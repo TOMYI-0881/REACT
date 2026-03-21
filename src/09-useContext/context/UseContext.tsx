@@ -5,6 +5,5 @@ interface UserContexProvider {
 }
 
 export const UseContextProvider = ({ children }: UserContexProvider) => {
-  const [name, setName] = useState("thomas");
-  return <div>{children}</div>;
+  return <>{children}</>;
 };
