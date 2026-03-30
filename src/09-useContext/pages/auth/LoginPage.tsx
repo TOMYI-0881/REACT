@@ -1,15 +1,37 @@
+import { UserContext } from "@/09-useContext/context/UseContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
+import { toast, Toaster } from "sonner";
 
 export const LoginPage = () => {
+  const [userId, setUserId] = useState("hola");
+  const { login } = useContext(UserContext);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const result = login(+userId);
+
+    if (!result) {
+      toast.error("no se encontro");
+      return;
+    }
+  };
+
   return (
     <div className="flex flex-col items-center min-h-screen">
+      <Toaster />
       <h1 className="text-4xl font-bold">Inicio de sesion</h1>
       <hr />
 
-      <form className="flex flex-col gap-2 my-10">
-        <Input type="number" placeholder="ID del usuario" />
+      <form className="flex flex-col gap-2 my-10" onSubmit={handleSubmit}>
+        <Input
+          type="number"
+          placeholder="ID del usuario"
+          value={userId}
+          onChange={(event) => setUserId(event.target.value)}
+        />
 
         <Button type="submit" variant="secondary">
           Login

@@ -16,6 +16,8 @@ export const InstagromApp = () => {
     { id: 2, text: "Me encanta🧡" },
   ]);
 
+  console.log({ comments });
+
   const [optimisitComent, setOptimistiComent] = useOptimistic(
     comments,
     (currentComents, nexComentText: string) => {
@@ -41,40 +43,47 @@ export const InstagromApp = () => {
     startTransition(async () => {
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
+      const failed = true;
+
+      if (failed) {
+        toast("Error al agregar el comentario", {
+          description: "intentalo nuevamente",
+          duration: 10_000,
+          position: "bottom-right",
+          action: {
+            label: "pene",
+            onClick: () => toast.dismiss(),
+          },
+        });
+        return;
+      }
+
+      setComments((prev) => {
+        console.log("estoy dentro del setCommments");
+        return [
+          ...prev,
+          {
+            id: new Date().getTime(),
+            text: messageText,
+          },
+        ];
+      });
+
       console.log("hola");
       ///!TODO: SOBRESCRIBIR UN OBJETO DEL ARRAY
       //   setComments((prev) =>
       //     prev.map((i) => (i.id === 1 ? { ...i, text: messageText } : i)),
       //   );
-      // };
+      // }
 
       //!simular que algo falla
-      setComments((prev) => prev);
-
-      toast("Error al agregar el comentario", {
-        description: "intentalo nuevamente",
-        duration: 10_000,
-        position: "bottom-right",
-        action: {
-          label: "cerrar",
-          onClick: () => toast.dismiss,
-        },
-      });
+      // setComments((prev) => prev);
     });
-    // setComments((prev) => {
-    //   console.log("estoy dentro del setCommments");
-    //   return [
-    //     ...prev,
-    //     {
-    //       id: new Date().getTime(),
-    //       text: messageText,
-    //     },
-    //   ];
-    // });
   };
 
   return (
     <div className="bg-slate-700 h-screen flex flex-col items-center justify-center">
+      <Toaster />
       {/* Post de ejemplo */}
       <div className="flex flex-col items-center justify-center bg-gray-300 rounded-t-3xl p-4 w-[500px]">
         <img
