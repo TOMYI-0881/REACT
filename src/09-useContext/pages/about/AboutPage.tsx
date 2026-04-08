@@ -26,7 +26,7 @@ export const AboutPage = () => {
           </Button>
         ) : (
           <Link to="/login" className="hover:text-blue-500 underline text-2xl">
-            inicio de sesion
+            inicio de sesionn
           </Link>
         )}
       </div>
